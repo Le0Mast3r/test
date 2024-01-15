@@ -12,10 +12,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: build
+    if: failure()
     steps:
     - name: Print test
       run: |
         echo "Job Test"
 
-  deploy:
-    runs-on: ubuntu-latest

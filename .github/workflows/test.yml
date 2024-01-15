@@ -17,4 +17,6 @@ jobs:
     - name: Print test
       run: |
         echo "Job Test"
+  deploy:
+    runs-on: ubuntu-latest
 

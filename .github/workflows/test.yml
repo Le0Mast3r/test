@@ -1,4 +1,4 @@
-name: Condition
+name: Failure workflow
 
 on: 
   workflow_dispatch:
@@ -8,15 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Execute Python
+      run: |
+        echo "ola"
   
   test:
     runs-on: ubuntu-latest
     needs: build
     if: failure()
     steps:
-    - name: Print test
-      run: |
-        echo "Job Test"
-  deploy:
-    runs-on: ubuntu-latest
+    - name: Display
+      run: echo 'Le job precedent a echoue'
+
+
+
 
